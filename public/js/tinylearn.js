@@ -1,6 +1,10 @@
 $(() => {
   const url = "https://en.wikipedia.org/w/api.php";
 
+  $.get("/api/user_data").then(data => {
+    $(".username").text(data.username);
+  });
+
   // eslint-disable-next-line no-unused-vars
   $("#randomPageFromWiki").on("click", () => {
     $(".randomPageTitle").text("");

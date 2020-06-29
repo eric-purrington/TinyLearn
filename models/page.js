@@ -3,6 +3,11 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defautValue: 0
     }
   });
   Page.associate = function(models) {

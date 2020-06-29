@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylesheets/style.css" type="text/css"/>
+    <title>TinyLearn</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="./js/tinylearn.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="assets/book.png" alt="Book" width="70" height="70" />
+                <img src="assets/tinylearn.png" alt="TinyLearn" width="120" height="50" />
+            </div>
+            <div>
+                <h2>Welcome <span class="username"></span>!</h2>
+            </div>
+            <div>
+                <a class="navbar-brand" href="/">Home</a>
+                <a class="navbar-brand" href="/mylearns">MyLearns</a>
+                <a class="navbar-brand" href="/about">About</a>
+                <a class="navbar-brand" href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1>Check out your past learns!</h1>
+                        <img src="./assets/red-squiggle.png" class="center" alt="underline" width="450" height="45"/>              
+                    </div>
+                    <div class="card-body big-bg">
+                        <div class="row">
+                            {{#each pages}}
+                            <div class="col-sm-3">
+                                <div class="card myLearnsCard" id="{{dataValues.name}}">
+                                    <div class="card-header text-center">
+                                        <i class="fas fa-thumbtack"></i><i class="fa fa-trash" id="{{dataValues.id}}"></i><h4>{{dataValues.name}}</h4>
+                                        <a href="https://en.wikipedia.org/wiki/{{dataValues.name}}" target="_blank">Learn more!</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testImg">sadfsadfsdafsadfsadfdsa</div>
+    <script>
+    const url = "https://en.wikipedia.org/w/api.php";
+    $(".testImg").on("click", function() {
+        const catParams = {
+          action: "query",
+          titles: "Java (programming language)",
+          prop: "pageimages",
+          pithumbsize: "100",
+          format: "json"
+        };
+
+        let catUrl = url + "?origin=*";
+        Object.keys(catParams).forEach(
+          key => (catUrl += "&" + key + "=" + catParams[key])
+        );
+
+        $.ajax({
+          url: catUrl,
+          method: "GET"
+        }).then(response => {
+            console.log(response);
+        });
+    });
+    function testImg(passedCat) {
+        const cmtitleInput = "Category:" + passedCat;
+        const catParams = {
+          action: "query",
+          titles: "Java (programming language)",
+          prop: "pageimages",
+          pithumbsize: "100",
+          format: "json"
+        };
+
+        let catUrl = url + "?origin=*";
+        Object.keys(catParams).forEach(
+          key => (catUrl += "&" + key + "=" + catParams[key])
+        );
+
+        $.ajax({
+          url: catUrl,
+          method: "GET"
+        }).then(response => {
+            console.log(response);
+        //   let randomPage = Math.floor(
+        //     Math.random() * response.query.categorymembers.length
+        //   );
+        //   let pickedPage = response.query.categorymembers[randomPage].title;
+        //   while (
+        //     pickedPage.startsWith("Portal:") ||
+        //     pickedPage.startsWith("Category:") ||
+        //     pickedPage.startsWith("File:")
+        //   ) {
+        //     randomPage = Math.floor(
+        //       Math.random() * response.query.categorymembers.length
+        //     );
+        //     pickedPage = response.query.categorymembers[randomPage].title;
+        //   }
+        //   retrieveAndRenderKnowledge(pickedPage);
+        });
+    }
+    </script>
+</body>
+</html>

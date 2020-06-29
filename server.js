@@ -1,9 +1,8 @@
 // Requiring necessary npm packages
-// added compression
-var compression = require('compression')
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 
@@ -16,17 +15,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-// added compression
-app.use(compression({ filter: shouldCompress }))
-function shouldCompress (req, res) {
-  if (req.headers['x-no-compression']) {
-    // don't compress responses with this request header
-    return false
-  }
- 
-  // fallback to standard filter function
-  return compression.filter(req, res)
-}
+
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
@@ -45,10 +34,6 @@ require("./routes/api-routes.js")(app);
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+    console.log(`App running on port ${PORT}!`);
   });
 });
