@@ -116,6 +116,7 @@ $(() => {
       const possibleError = response.query.categorymembers[0];
       // eslint-disable-next-line eqeqeq
       if (possibleError == null) {
+        addSubjectSecondChance(categoryToPost);
         $(".addSubjectResponse").text(
           `We're sorry, but ${categoryToPost} isn't a valid category name.`
         );
@@ -127,6 +128,57 @@ $(() => {
       }
     });
   });
+
+  function addSubjectSecondChance(categoryToPost) {
+    const validateParams2 = {
+      action: "query",
+      format: "json",
+      prop: "categories",
+      titles: categoryToPost,
+      cllimit: "100"
+    };
+  
+    let validateUrl2 = url + "?origin=*";
+    Object.keys(params).forEach(function(key){validateUrl2 += "&" + key + "=" + validateParams2[key];});
+  
+    $.ajax({
+      url: validateUrl2,
+      method: "GET"
+    }).then(response => {
+      const possibleError = response.query.pages[0];
+      // eslint-disable-next-line eqeqeq
+      if (possibleError == null) {
+        $(".addSubjectResponse").text(
+          `We're sorry, but ${categoryToPost} isn't a valid category name.`
+        );
+        return;
+        // eslint-disable-next-line no-else-return
+      } else {
+        $(".addSubjectResponse").text(`${categoryToPost} added to database.`);
+        const pageId = Object.keys(response.query.pages)[0];
+        let randomCat = Math.floor(
+          Math.random() * response.query.pages[pageId].categories.length
+        );
+        let newCategoryToPost = response.query.pages[pageId].categories[randomCat].title;
+        while (
+          newCategoryToPost.includes("Wikipedia") ||
+          newCategoryToPost.includes("Articles") ||
+          newCategoryToPost.includes("articles") ||
+          newCategoryToPost.includes("Pages") ||
+          newCategoryToPost.includes("pages") ||
+          newCategoryToPost.includes("Webarchive") ||
+          newCategoryToPost.includes("maint")
+        ) {
+          randomCat = Math.floor(
+            Math.random() * response.query.pages[pageId].categories.length
+          );
+          newCategoryToPost = response.query.pages[pageId].categories[randomCat].title;
+        }
+        newCategoryToPost = newCategoryToPost.replace(/Category:/g, "");
+        postCat(newCategoryToPost);
+      }
+    });
+  }
 
   function postCat(categoryToPost) {
     const rewrittenCategoryToPost = categoryToPost.replace(/ /g, "_");

@@ -55,65 +55,57 @@
     </div>
     <div class="testImg">sadfsadfsdafsadfsadfdsa</div>
     <script>
-    const url = "https://en.wikipedia.org/w/api.php";
+    let url = "https://en.wikipedia.org/w/api.php";
     $(".testImg").on("click", function() {
-        const catParams = {
-          action: "query",
-          titles: "Java (programming language)",
-          prop: "pageimages",
-          pithumbsize: "100",
-          format: "json"
-        };
+        var params = {
+    action: "query",
+    format: "json",
+    prop: "categories",
+    titles: "asdfgdfh",
+    cllimit: "100"
+};
 
-        let catUrl = url + "?origin=*";
-        Object.keys(catParams).forEach(
-          key => (catUrl += "&" + key + "=" + catParams[key])
-        );
+url = url + "?origin=*";
+Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
 
         $.ajax({
-          url: catUrl,
+          url: url,
           method: "GET"
         }).then(response => {
             console.log(response);
+            const possibleError = response.query.pages[0];
+      // eslint-disable-next-line eqeqeq
+      if (possibleError == null) {
+        console.log(
+          `We're sorry, but ${params.titles} isn't a valid category name.`
+        );
+        // eslint-disable-next-line no-else-return
+      } else {
+        console.log(`${params.titles} added to database.`);
+      }
+            const pageId = Object.keys(response.query.pages)[0];
+            let randomCat = Math.floor(
+        Math.random() * response.query.pages[pageId].categories.length
+      );
+      let newCategoryToPost = response.query.pages[pageId].categories[randomCat].title;
+      while (
+        newCategoryToPost.includes("Wikipedia") ||
+        newCategoryToPost.includes("Articles") ||
+        newCategoryToPost.includes("articles") ||
+        newCategoryToPost.includes("Pages") ||
+        newCategoryToPost.includes("pages") ||
+        newCategoryToPost.includes("Webarchive") ||
+        newCategoryToPost.includes("maint")
+      ) {
+        randomCat = Math.floor(
+          Math.random() * response.query.pages[pageId].categories.length
+        );
+        newCategoryToPost = response.query.pages[pageId].categories[randomCat].title;
+      }
+      newCategoryToPost = newCategoryToPost.replace(/Category:/g, "");
+      console.log(newCategoryToPost);
         });
     });
-    function testImg(passedCat) {
-        const cmtitleInput = "Category:" + passedCat;
-        const catParams = {
-          action: "query",
-          titles: "Java (programming language)",
-          prop: "pageimages",
-          pithumbsize: "100",
-          format: "json"
-        };
-
-        let catUrl = url + "?origin=*";
-        Object.keys(catParams).forEach(
-          key => (catUrl += "&" + key + "=" + catParams[key])
-        );
-
-        $.ajax({
-          url: catUrl,
-          method: "GET"
-        }).then(response => {
-            console.log(response);
-        //   let randomPage = Math.floor(
-        //     Math.random() * response.query.categorymembers.length
-        //   );
-        //   let pickedPage = response.query.categorymembers[randomPage].title;
-        //   while (
-        //     pickedPage.startsWith("Portal:") ||
-        //     pickedPage.startsWith("Category:") ||
-        //     pickedPage.startsWith("File:")
-        //   ) {
-        //     randomPage = Math.floor(
-        //       Math.random() * response.query.categorymembers.length
-        //     );
-        //     pickedPage = response.query.categorymembers[randomPage].title;
-        //   }
-        //   retrieveAndRenderKnowledge(pickedPage);
-        });
-    }
     </script>
 </body>
 </html>
