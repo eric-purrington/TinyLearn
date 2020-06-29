@@ -117,10 +117,6 @@ $(() => {
       // eslint-disable-next-line eqeqeq
       if (possibleError == null) {
         addSubjectSecondChance(categoryToPost);
-        $(".addSubjectResponse").text(
-          `We're sorry, but ${categoryToPost} isn't a valid category name.`
-        );
-        return;
         // eslint-disable-next-line no-else-return
       } else {
         $(".addSubjectResponse").text(`${categoryToPost} added to database.`);
@@ -139,7 +135,7 @@ $(() => {
     };
   
     let validateUrl2 = url + "?origin=*";
-    Object.keys(params).forEach(function(key){validateUrl2 += "&" + key + "=" + validateParams2[key];});
+    Object.keys(validateParams2).forEach(function(key){validateUrl2 += "&" + key + "=" + validateParams2[key];});
   
     $.ajax({
       url: validateUrl2,
@@ -154,7 +150,6 @@ $(() => {
         return;
         // eslint-disable-next-line no-else-return
       } else {
-        $(".addSubjectResponse").text(`${categoryToPost} added to database.`);
         const pageId = Object.keys(response.query.pages)[0];
         let randomCat = Math.floor(
           Math.random() * response.query.pages[pageId].categories.length
@@ -175,6 +170,7 @@ $(() => {
           newCategoryToPost = response.query.pages[pageId].categories[randomCat].title;
         }
         newCategoryToPost = newCategoryToPost.replace(/Category:/g, "");
+        $(".addSubjectResponse").text(`We're sorry, but ${categoryToPost} isn't a valid category name. So ${newCategoryToPost} was added to the database instead.`);
         postCat(newCategoryToPost);
       }
     });
