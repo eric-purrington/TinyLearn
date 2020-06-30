@@ -22,10 +22,6 @@ h1 {
   background-color: #fdfd96;
 }
 
-/* .col-sm-3 {
-  margin: 35px;
-} */
-
 .big-bg {
   background-image: url("/assets/corkboard.jpg");
 }
@@ -37,8 +33,12 @@ h1 {
   width: 50%;
 }
 
+.randomPageTitle {
+  text-align:center;
+}
+
 .randomPage {
-  background-color: #fdfd96;
+  background-image: url("/assets/linedpaper.png");
 }
 
 .myLearnsCard {
@@ -55,8 +55,10 @@ h1 {
   margin-left: 7px;
   color: red;
 }
-
-.fa-trash:hover {
+.checked {
+  color: yellow;
+}
+.fa-trash:hover, .fa-star:hover {
   cursor: pointer;
 }
 

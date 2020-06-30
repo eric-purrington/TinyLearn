@@ -53,4 +53,21 @@ module.exports = function(app) {
         console.log(err);
       });
   });
+  app.get("/toppages", isAuthenticated, (req, res) => {
+    db.page
+      .findAll({
+        where: {
+          rating: 5
+        }
+      })
+      .then(pageSet => {
+        const hbsObject = {
+          pages: pageSet
+        };
+        res.render("toppages", hbsObject);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 };
