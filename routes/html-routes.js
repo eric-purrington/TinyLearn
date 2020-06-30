@@ -36,7 +36,6 @@ module.exports = function(app) {
   // Render the "mylearns" page, where the user's past learns
   // are stored in a board-like database
   app.get("/mylearns", isAuthenticated, (req, res) => {
-    // console.log(req);
     db.page
       .findAll({
         where: {
@@ -53,6 +52,8 @@ module.exports = function(app) {
         console.log(err);
       });
   });
+
+  // Highest rated learns page
   app.get("/toppages", isAuthenticated, (req, res) => {
     db.page
       .findAll({
