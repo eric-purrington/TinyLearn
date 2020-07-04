@@ -1,7 +1,7 @@
 {
-  "name": "project-2",
+  "name": "tinylearn",
   "version": "1.0.0",
-  "description": "",
+  "description": "A microlearning app",
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vxmao87/project-2.git"
+    "url": "git+https://github.com/eric-purrington/TinyLearn.git"
   },
   "author": "Vinh, Julie, and Eric",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vxmao87/project-2/issues"
+    "url": "https://github.com/eric-purrington/TinyLearn/issues"
   },
-  "homepage": "https://github.com/vxmao87/project-2#readme",
+  "homepage": "https://github.com/eric-purrington/TinyLearn#readme",
   "dependencies": {
     "bcryptjs": "2.4.3",
     "compression": "^1.7.4",
@@ -27,7 +27,6 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "express-session": "^1.16.1",
-    "mysql": "^2.18.1",
     "mysql2": "^1.7.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",

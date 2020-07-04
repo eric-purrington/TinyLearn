@@ -49,11 +49,11 @@ $(() => {
         );
         pickedPage = response.query.categorymembers[randomPage].title;
       }
-      retrieveAndRenderKnowledge(pickedPage);
+      retrieveAndRenderKnowledge(pickedPage, passedCat);
     });
   }
 
-  function retrieveAndRenderKnowledge(pickedPage) {
+  function retrieveAndRenderKnowledge(pickedPage, passedCat) {
     const pageParams = {
       action: "query",
       titles: pickedPage,
@@ -82,12 +82,13 @@ $(() => {
       $(".renderHere").html(knowledgeToRender);
       $(".randomPageLink").html(wikiPageA);
     });
-    postPickedPage(pickedPage);
+    postPickedPage(pickedPage, passedCat);
   }
 
-  function postPickedPage(pickedPage) {
+  function postPickedPage(pickedPage, passedCat) {
     $.post("api/page", {
-      name: pickedPage
+      name: pickedPage,
+      category: passedCat
     });
   }
 

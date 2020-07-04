@@ -20,9 +20,9 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    // console.log(req.body);
     db.User.create({
       email: req.body.email,
+      username: req.body.username,
       password: req.body.password
     })
       .then(() => {
@@ -56,17 +56,17 @@ module.exports = function(app) {
 
   // Unused
   // Route for grabbing data about a user's subjects
-  app.get("/api/categories", (req, res) => {
-    if (!req.user) {
-      // If the user isn't logged in, nothing will show up
-      res.json();
-    } else {
-      // Otherwise, send info about the subjects the user will see
-      db.category.findAll({}).then(dbCat => {
-        res.json(dbCat);
-      });
-    }
-  });
+  // app.get("/api/categories", (req, res) => {
+  //   if (!req.user) {
+  //     // If the user isn't logged in, nothing will show up
+  //     res.json();
+  //   } else {
+  //     // Otherwise, send info about the subjects the user will see
+  //     db.category.findAll({}).then(dbCat => {
+  //       res.json(dbCat);
+  //     });
+  //   }
+  // });
 
   // Route for grabbing all pages for one user
   // User must be logged in for route to work
@@ -88,31 +88,31 @@ module.exports = function(app) {
 
   // Unused
   // Route for grabbing data about one subject using ID
-  app.get("/api/category/:id", (req, res) => {
-    db.category
-      .findOne({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(dbCat => {
-        res.json(dbCat);
-      });
-  });
+  // app.get("/api/category/:id", (req, res) => {
+  //   db.category
+  //     .findOne({
+  //       where: {
+  //         id: req.params.id
+  //       }
+  //     })
+  //     .then(dbCat => {
+  //       res.json(dbCat);
+  //     });
+  // });
 
   // Unused
   // Route for grabbing data for one page using ID
-  app.get("/api/page/:id", (req, res) => {
-    db.page
-      .findOne({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(page => {
-        res.json(page);
-      });
-  });
+  // app.get("/api/page/:id", (req, res) => {
+  //   db.page
+  //     .findOne({
+  //       where: {
+  //         id: req.params.id
+  //       }
+  //     })
+  //     .then(page => {
+  //       res.json(page);
+  //     });
+  // });
 
   // Route for finding a random subject
   app.get("/api/category", (req, res) => {
@@ -141,6 +141,7 @@ module.exports = function(app) {
     db.page
       .create({
         name: req.body.name,
+        category: req.body.category,
         UserId: req.user.id
       })
       .then(page => {
@@ -150,17 +151,17 @@ module.exports = function(app) {
 
   // Unused
   // Delete a subject
-  app.delete("/api/category/:id", (req, res) => {
-    db.category
-      .destroy({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(dbCat => {
-        res.json(dbCat);
-      });
-  });
+  // app.delete("/api/category/:id", (req, res) => {
+  //   db.category
+  //     .destroy({
+  //       where: {
+  //         id: req.params.id
+  //       }
+  //     })
+  //     .then(dbCat => {
+  //       res.json(dbCat);
+  //     });
+  // });
 
   // Delete a page based on ID
   app.delete("/api/page/:id", (req, res) => {

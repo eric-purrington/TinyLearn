@@ -15,7 +15,13 @@ module.exports = function(sequelize, DataTypes) {
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: {
+          args: [8, 32],
+          msg: "Password length must be between 8 and 32 characters."
+        }
+      }
     },
     username: {
       type: DataTypes.STRING,

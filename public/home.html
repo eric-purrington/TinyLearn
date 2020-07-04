@@ -11,17 +11,20 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-            <img src="./assets/book.png" alt="Book" width="70" height="70" />
-            <img src="./assets/tinylearn.png" alt="TinyLearn" width="120" height="50" />
+                <img src="./assets/book.png" alt="Book" width="70" height="70" />
+                <img src="./assets/tinylearn.png" alt="TinyLearn" width="120" height="50" />
             </div>
-            <div>
+            <!-- <div>
                 <h2>Welcome <span class="username"></span>!</h2>
-            </div>
-            <div>
-                <a class="navbar-brand" href="/">Home</a>
-                <a class="navbar-brand" href="/mylearns">MyLearns</a>
-                <a class="navbar-brand" href="/about">About</a>
-                <a class="navbar-brand" href="/logout">Logout</a>
+            </div> -->
+            <!-- <nav class="navbar"> -->
+                <span class="navbar-brand mb-0 h1">Welcome <span class="username"></span>!</span>
+            <!-- </nav> -->
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/">Home</a>
+                <a class="nav-item nav-link" href="/mylearns">MyLearns</a>
+                <a class="nav-item nav-link" href="/about">About</a>
+                <a class="nav-item nav-link" href="/logout">Logout</a>
             </div>
         </div>
     </nav>
@@ -64,11 +67,7 @@
                     <div class="card-body randomPage">
                         <h2 class="randomPageTitle"></h2>
                         <div class="starsHere"></div>
-                        <span class="oneStar fa fa-star checked"></span>
-                        <span class="twoStar fa fa-star checked"></span>
-                        <span class="threeStar fa fa-star checked"></span>
-                        <span class="fourStar fa fa-star"></span>
-                        <span class="fiveStar fa fa-star"></span>
+                        <span class="starRating"><i class="oneStar far fa-star"></i><i class="twoStar far fa-star"></i><i class="threeStar far fa-star"></i><i class="fourStar far fa-star"></i><i class="fiveStar far fa-star"></i></span>
                         <p class="renderHere"></p>
                         <p class="randomPageLink"></p>
                     </div>

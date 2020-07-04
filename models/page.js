@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       defautValue: 0
+    },
+    category: {
+      type: DataTypes.String,
+      allowNull: false
     }
   });
   Page.associate = function(models) {
