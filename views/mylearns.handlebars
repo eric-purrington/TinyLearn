@@ -1,17 +1,20 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-md">
     <div class="container-fluid">
         <div class="navbar-header">
-            <img src="assets/book.png" alt="Book" width="70" height="70" />
-            <img src="assets/tinylearn.png" alt="TinyLearn" width="120" height="50" />
+            <img src="./assets/book.png" alt="Book" width="70" height="70" />
+            <img src="./assets/tinylearn.png" alt="TinyLearn" width="120" height="50" />
         </div>
-        <div>
-            Welcome
-        </div>
-        <div>
-            <a class="navbar-brand" href="/">Home</a>
-            <a class="navbar-brand" href="/mylearns">MyLearns</a>
-            <a class="navbar-brand" href="/about">About</a>
-            <a class="navbar-brand" href="/logout">Logout</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link" href="/mylearns">My Learns</a>
+            <a class="nav-item nav-link" href="/toppages">Top Rated Learns</a>
+            <a class="nav-item nav-link" href="/about">About</a>
+            <a class="nav-item nav-link" href="/logout">Logout</a>
         </div>
     </div>
 </nav>
