@@ -4,7 +4,7 @@ $(() => {
   $.get("/api/user_data").then(data => {
     $(".username").text(data.username);
   });
-
+  
   // eslint-disable-next-line no-unused-vars
   $("#randomPageFromWiki").on("click", () => {
     $(".randomPageTitle").text("");
@@ -54,6 +54,8 @@ $(() => {
   }
 
   function retrieveAndRenderKnowledge(pickedPage, passedCat) {
+    const stars = `<i class="fas fa-star" id="1"></i><i class="fas fa-star" id="2"></i><i class="fas fa-star" id="3"></i><i class="fas fa-star" id="4"></i><i class="fas fa-star" id="5"></i>`
+    
     const pageParams = {
       action: "query",
       titles: pickedPage,
@@ -79,10 +81,61 @@ $(() => {
         "<br>"
       );
       $(".randomPageTitle").text(pickedPage);
+      $(".starHere").html(stars);
       $(".renderHere").html(knowledgeToRender);
       $(".randomPageLink").html(wikiPageA);
     });
     postPickedPage(pickedPage, passedCat);
+  }
+
+  function rating() {
+    const id = parseInt($(this).attr("id"));
+
+    switch (id) {
+      case 5:
+        $(".fa-star").addClass("checked");
+        break;
+      case 4:
+        $("#5").removeClass("checked");
+        $("#4").addClass("checked");
+        $("#3").addClass("checked");
+        $("#2").addClass("checked");
+        $("#1").addClass("checked");
+        break;
+      case 3:
+        $("#5").removeClass("checked");
+        $("#4").removeClass("checked");
+        $("#3").addClass("checked");
+        $("#2").addClass("checked");
+        $("#1").addClass("checked");
+        break;
+      case 2:
+        $("#5").removeClass("checked");
+        $("#4").removeClass("checked");
+        $("#3").removeClass("checked");
+        $("#2").addClass("checked");
+        $("#1").addClass("checked");
+        break;
+      case 1:
+        $("#5").removeClass("checked");
+        $("#4").removeClass("checked");
+        $("#3").removeClass("checked");
+        $("#2").removeClass("checked");
+        $("#1").addClass("checked");
+        break;
+    }
+
+    $.get("/api/page/mostrecent").then(data => {
+      const pageToUpdate = data.id;
+      updatePage(id, pageToUpdate);
+    });
+  }
+
+  function updatePage(id, pageToUpdate) {
+    $.put("api/page/rate", {
+      id: pageToUpdate,
+      rating: id
+    });
   }
 
   function postPickedPage(pickedPage, passedCat) {
@@ -186,7 +239,6 @@ $(() => {
 
   $(".fa-trash").on("click", function() {
     const id = $(this).attr("id");
-    console.log(id);
     $.ajax({
       method: "DELETE",
       url: "/api/page/" + id
@@ -194,4 +246,6 @@ $(() => {
       location.reload();
     });
   });
+
+  $(document).on("click", ".fa-star", rating);
 });

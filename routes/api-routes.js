@@ -125,6 +125,18 @@ module.exports = function(app) {
       });
   });
 
+  // Route for getting most recent page to update it
+  app.get("/api/page/mostrecent", (req, res) => {
+    db.page
+      .findAll({
+        limit: 1,
+        order: [['createdAt', 'DESC']]
+      })
+      .then(dbPage => {
+        res.json(dbPage);
+      });
+  });
+
   // Create a subject
   app.post("/api/category/add", (req, res) => {
     db.category
@@ -148,6 +160,23 @@ module.exports = function(app) {
         res.json(page);
       });
   });
+
+  // Route for updating most recent page's rating
+  app.put("/api/page/rate", (req, res) => {
+    db.page
+      .update(
+        {
+          rating: req.body.rating
+        },
+        {
+        where: {
+          id: req.body.id
+        }
+        })
+      .then(dbPut => {
+          res.json(dbPut);
+      })
+  })
 
   // Unused
   // Delete a subject
