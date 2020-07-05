@@ -32,7 +32,45 @@
                         <div class="col-sm-3">
                             <div class="card myLearnsCard" id="{{dataValues.name}}">
                                 <div class="card-header text-center">
-                                    <i class="fas fa-thumbtack"></i><i class="fa fa-trash" id="{{dataValues.id}}"></i><h4>{{dataValues.name}}</h4>
+                                    <i class="fas fa-thumbtack"></i><i class="fa fa-trash" id="{{dataValues.id}}"></i>
+                                    <h4>{{dataValues.name}}</h4>
+                                    <div class="myLearnStarsHere">
+                                        {{#if (eq dataValues.rating 1)}}
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        {{/if}}
+                                        {{#if (eq dataValues.rating 2)}}
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        {{/if}}
+                                        {{#if (eq dataValues.rating 3)}}
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        {{/if}}
+                                        {{#if (eq dataValues.rating 4)}}
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star"></i>
+                                        {{/if}}
+                                        {{#if (eq dataValues.rating 5)}}
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                            <i class="fas fa-star checked"></i>
+                                        {{/if}}
+                                    </div>
                                     <a href="https://en.wikipedia.org/wiki/{{dataValues.name}}" target="_blank">Learn more!</a>
                                 </div>
                             </div>

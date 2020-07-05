@@ -54,8 +54,8 @@ $(() => {
   }
 
   function retrieveAndRenderKnowledge(pickedPage, passedCat) {
-    const stars = `<i class="fas fa-star" id="1"></i><i class="fas fa-star" id="2"></i><i class="fas fa-star" id="3"></i><i class="fas fa-star" id="4"></i><i class="fas fa-star" id="5"></i>`
-    
+    const stars = `<i class="fas fa-star rateMe" id="1"></i><i class="fas fa-star rateMe" id="2"></i><i class="fas fa-star rateMe" id="3"></i><i class="fas fa-star rateMe" id="4"></i><i class="fas fa-star rateMe" id="5"></i>`
+
     const pageParams = {
       action: "query",
       titles: pickedPage,
@@ -93,7 +93,7 @@ $(() => {
 
     switch (id) {
       case 5:
-        $(".fa-star").addClass("checked");
+        $(".rateMe").addClass("checked");
         break;
       case 4:
         $("#5").removeClass("checked");
@@ -247,5 +247,5 @@ $(() => {
     });
   });
 
-  $(document).on("click", ".fa-star", rating);
+  $(document).on("click", ".rateMe", rating);
 });
