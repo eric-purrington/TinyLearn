@@ -42,7 +42,8 @@ $(() => {
       while (
         pickedPage.startsWith("Portal:") ||
         pickedPage.startsWith("Category:") ||
-        pickedPage.startsWith("File:")
+        pickedPage.startsWith("File:") ||
+        pickedPage.startsWith("User:")
       ) {
         randomPage = Math.floor(
           Math.random() * response.query.categorymembers.length
@@ -54,7 +55,12 @@ $(() => {
   }
 
   function retrieveAndRenderKnowledge(pickedPage, passedCat) {
-    const stars = `<i class="fas fa-star rateMe" id="1"></i><i class="fas fa-star rateMe" id="2"></i><i class="fas fa-star rateMe" id="3"></i><i class="fas fa-star rateMe" id="4"></i><i class="fas fa-star rateMe" id="5"></i>`
+    const stars = `
+      <i class="fas fa-star rateMe" id="1"></i>
+      <i class="fas fa-star rateMe" id="2"></i>
+      <i class="fas fa-star rateMe" id="3"></i>
+      <i class="fas fa-star rateMe" id="4"></i>
+      <i class="fas fa-star rateMe" id="5"></i>`
 
     const pageParams = {
       action: "query",
@@ -81,7 +87,7 @@ $(() => {
         "<br>"
       );
       $(".randomPageTitle").text(pickedPage);
-      $(".starHere").html(stars);
+      $(".starsHere").html(stars);
       $(".renderHere").html(knowledgeToRender);
       $(".randomPageLink").html(wikiPageA);
     });
@@ -126,15 +132,19 @@ $(() => {
     }
 
     $.get("/api/page/mostrecent").then(data => {
-      const pageToUpdate = data.id;
+      const pageToUpdate = data[0].id;
       updatePage(id, pageToUpdate);
     });
   }
 
   function updatePage(id, pageToUpdate) {
-    $.put("api/page/rate", {
-      id: pageToUpdate,
-      rating: id
+    $.ajax({
+      url: "api/page/rate",
+      type: "PUT",
+      data: {
+        id: pageToUpdate,
+        rating: id
+      }
     });
   }
 

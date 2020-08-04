@@ -24,7 +24,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Set Handlebars as the default templating engine.
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+const hbs = exphbs.create({
+  defaultLayout: "main",
+  helpers: {
+    ifeq: function (a, b, options) {
+      if (a == b) { return options.fn(this); }
+      return options.inverse(this);
+    }
+  }
+});
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Requiring our routes

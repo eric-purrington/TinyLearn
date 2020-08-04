@@ -14,12 +14,13 @@ $(document).ready(() => {
       password: passwordInput.val().trim()
     };
 
-    if (!userData.email || !userData.password) {
+    if (!userData.email || !userData.password || !userData.username) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userDate.username, userData.password);
+    signUpUser(userData.email, userData.username, userData.password);
     emailInput.val("");
+    usernameInput.val("");
     passwordInput.val("");
   });
 
