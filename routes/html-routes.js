@@ -40,7 +40,8 @@ module.exports = function(app) {
       .findAll({
         where: {
           UserId: req.user.id
-        }
+        },
+        order: [["rating", "DESC"]]
       })
       .then(pageSet => {
         const hbsObject = {

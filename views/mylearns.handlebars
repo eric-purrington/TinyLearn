@@ -29,46 +29,46 @@
                 <div class="card-body big-bg">
                     <div class="row">
                         {{#each pages}}
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="card myLearnsCard" id="{{dataValues.name}}">
                                 <div class="card-header text-center">
                                     <i class="fas fa-thumbtack"></i><i class="fa fa-trash" id="{{dataValues.id}}"></i>
                                     <h4>{{dataValues.name}}</h4>
                                     <div class="myLearnStarsHere">
                                         {{#ifeq dataValues.rating 1}}
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star"></i>
+                                            <i class="noClick fas fa-star"></i>
+                                            <i class="noClick fas fa-star"></i>
+                                            <i class="noClick fas fa-star"></i>
                                         {{/ifeq}}
                                         {{#ifeq dataValues.rating 2}}
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star"></i>
+                                            <i class="noClick fas fa-star"></i>
+                                            <i class="noClick fas fa-star"></i>
                                         {{/ifeq}}
                                         {{#ifeq dataValues.rating 3}}
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star"></i>
+                                            <i class="noClick fas fa-star"></i>
                                         {{/ifeq}}
                                         {{#ifeq dataValues.rating 4}}
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star"></i>
                                         {{/ifeq}}
                                         {{#ifeq dataValues.rating 5}}
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
-                                            <i class="fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
+                                            <i class="noClick fas fa-star checked"></i>
                                         {{/ifeq}}
                                     </div>
                                     <a href="https://en.wikipedia.org/wiki/{{dataValues.name}}" target="_blank">Learn more!</a>

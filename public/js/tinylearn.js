@@ -183,7 +183,7 @@ $(() => {
         addSubjectSecondChance(categoryToPost);
         // eslint-disable-next-line no-else-return
       } else {
-        $(".addSubjectResponse").text(`${categoryToPost} added to database.`);
+        $(".addSubjectResponse").text(`Nice! ${categoryToPost[0].toUpperCase() + categoryToPost.slice(1)} added to database!`);
         postCat(categoryToPost);
       }
     });

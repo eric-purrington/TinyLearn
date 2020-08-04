@@ -73,6 +73,10 @@ h1 {
   cursor: pointer;
 }
 
+.noClick:hover {
+  cursor: auto !important;
+}
+
 a {
   color: #5bc0de;
 }
