@@ -58,9 +58,8 @@ module.exports = function(app) {
   app.get("/toppages", isAuthenticated, (req, res) => {
     db.page
       .findAll({
-        where: {
-          rating: 5
-        }
+        limit: 50,
+        order: [["rating", "DESC"]]
       })
       .then(pageSet => {
         const hbsObject = {
