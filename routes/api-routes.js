@@ -1,5 +1,6 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
+const axios = require("axios");
 const passport = require("../config/passport");
 const { sequelize } = require("../models");
 // const Sequelize = require("sequelize");

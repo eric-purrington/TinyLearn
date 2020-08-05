@@ -51,7 +51,7 @@ h1 {
 
 .myLearnsCard {
   margin-top: 15px;
-  background-color: #fdfd96;
+  background-color: #FFFF88;
 }
 
 .fa-thumbtack {
@@ -67,7 +67,7 @@ h1 {
   color: black;
 }
 .checked {
-  color: yellow;
+  color: orange;
 }
 .fa-trash:hover, .fa-star:hover {
   cursor: pointer;

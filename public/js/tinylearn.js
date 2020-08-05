@@ -43,7 +43,8 @@ $(() => {
         pickedPage.startsWith("Portal:") ||
         pickedPage.startsWith("Category:") ||
         pickedPage.startsWith("File:") ||
-        pickedPage.startsWith("User:")
+        pickedPage.startsWith("User:") ||
+        pickedPage.startsWith("Draft:")
       ) {
         randomPage = Math.floor(
           Math.random() * response.query.categorymembers.length
