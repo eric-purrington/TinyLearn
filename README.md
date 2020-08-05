@@ -1,9 +1,7 @@
 # TinyLearn
 ## Link
-https://young-retreat-53983.herokuapp.com/
+[Live App](https://tinylearn.herokuapp.com/)
 
-## Presentation Link
-https://docs.google.com/presentation/d/1JXmxZtZebX-B-ALyj9jkpHwie-qT1a-fuYIuYtoM7HY/
 ## Description
 Bored? LEARN SOMETHING!
 
